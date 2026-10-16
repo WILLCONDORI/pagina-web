@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EducaTech - Carreras Profesionales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background-color: #5c2d91;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+            color: white;
+            font-weight: 800;
+            z-index: 1001;
+        }
+
+        .logo-top {
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .logo-bottom {
+            font-size: 17px;
+            letter-spacing: 1px;
+            margin-top: -1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: rgb(241, 240, 243);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .search-icon {
+            color: rgb(234, 233, 241);
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            height: 420px;
+            background: linear-gradient(rgba(246, 245, 248, 0.55), rgba(127, 90, 170, 0.55)),
+                        url('https://images.pexels.com/photos/33533736/pexels-photo-33533736/free-photo-of-disposicion-plana-de-libros-abiertos-vintage-para-estudio.jpeg?cs=tinysrgb&dpr=1&w=500') center/cover no-repeat;
+        }
+
+        /* ========== SECCIÓN TÍTULO ========== */
+        .content-section {
+            background: rgb(186, 232, 243);
+            border-radius: 30px 30px 0 0;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+            padding: 40px 25px 30px;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
+        }
+
+        .content-section h1 {
+            color: #8769a8;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
+            color: #444;
+            font-size: 16px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        /* ========== SECCIONES GENERALES ========== */
+        .seccion {
+            padding: 50px 20px;
+        }
+
+        .seccion-titulo {
+            text-align: center;
+            color: #5c2d91;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ========== NOSOTROS ========== */
+        .nosotros {
+            background: white;
+        }
+
+        .nosotros-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nosotros-texto p {
+            color: #444;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .nosotros-imagen img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* ========== CARRERAS ========== */
+        .carreras {
+            background: #f7f7f9;
+        }
+
+        .grid-carreras {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(92, 45, 145, 0.15);
+        }
+
+        .card-img {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            z-index: 2;
+        }
+
+        .badge-diseno, .badge-comunicaciones, .badge-negocios {
+            background: #5c2d91;
+        }
+
+        .badge-nueva {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #f5c518;
+            color: #333;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .card-body {
+            padding: 16px 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-body h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d2d2d;
+            line-height: 1.35;
+        }
+
+        .arrow {
+            font-size: 20px;
+            color: #5c2d91;
+            font-weight: 300;
+        }
+
+        /* ========== UBÍCANOS ========== */
+        .ubicanos {
+            background: white;
+        }
+
+        .ubicanos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .ubicanos-info h3 {
+            color: #5c2d91;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .ubicanos-info p {
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .mapa {
+            background: #eee;
+            height: 250px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ========== ADMISIÓN ========== */
+        .admision {
+            background: #f7f7f9;
+        }
+
+        .fechas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .fecha-card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .fecha-card h3 {
+            color: #5c2d91;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .fecha-card p {
+            color: #555;
+            font-size: 15px;
+        }
+
+        /* ========== COMUNIDAD ========== */
+        .comunidad {
+            background: white;
+        }
+
+        .comunidad-texto {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: #444;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* ========== DOCENTES ========== */
+        .docentes {
+            background: #f7f7f9;
+        }
+
+        .grid-docentes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+        }
+
+        .docente-card {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .docente-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 3px solid #5c2d91;
+        }
+
+        .docente-card h3 {
+            color: #5c2d91;
+            margin-bottom: 5px;
+            font-size: 17px;
+        }
+
+        .docente-card .carrera {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .docente-card p {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ========== FORMULARIO ========== */
+        .registro {
+            background: white;
+        }
+
+        .form-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .form-group small {
+            color: red;
+            display: none;
+            font-size: 13px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 22px;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            background: #5c2d91;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-enviar:hover {
+            background: #4a2475;
+        }
+
+        .mensaje-exito {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: #5c2d91;
+                flex-direction: column;
+                padding: 90px 30px 40px;
+                gap: 22px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                font-size: 16px;
+            }
+
+            .hero {
+                height: 320px;
+            }
+
+            .content-section {
+                padding: 35px 20px 25px;
+            }
+
+            .content-section h1 {
+                font-size: 26px;
+            }
+
+            .seccion {
+                padding: 40px 18px;
+            }
+
+            .seccion-titulo {
+                font-size: 24px;
+            }
+
+            .nosotros-grid,
+            .ubicanos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-carreras {
+                grid-template-columns: 1fr;
+            }
+
+            .fechas {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .grid-docentes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .fechas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <span class="logo-top">EDUCA</span>
+            <span class="logo-bottom">TECH</span>
+        </a>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#carreras">Carreras</a></li>
+            <li><a href="#ubicanos">Ubícanos</a></li>
+            <li><a href="#admision">Admisión</a></li>
+            <li><a href="#comunidad">Comunidad</a></li>
+            <li><a href="#docentes">Docentes</a></li>
+            <li><a href="#registro">Regístrate</a></li>
+            
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero"></section>
+
+    <!-- TÍTULO -->
+    <section class="content-section">
+        <h1>Carreras Profesionales</h1>
+        <p>
+            Descubre nuestras carreras profesionales diseñadas para el mundo creativo y digital. 
+            Forma parte de una comunidad apasionada por el diseño, la comunicación y la tecnología.
+        </p>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="seccion nosotros" id="nosotros">
+        <div class="container">
+            <h2 class="seccion-titulo">Nosotros</h2>
+            <div class="nosotros-grid">
+                <div class="nosotros-texto">
+                    <p>EducaTech es una institución educativa dedicada a formar profesionales creativos, innovadores y con una sólida base técnica.</p>
+                    <p>Creemos en el poder de la educación práctica, el trabajo en equipo y el desarrollo de talentos que transformen la industria creativa y digital.</p>
+                    <p>Nuestra comunidad está formada por estudiantes, docentes y egresados apasionados por el diseño, la comunicación, los negocios y la tecnología.</p>
+                </div>
+                <div class="nosotros-imagen">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop" alt="Nosotros">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARRERAS -->
+<section class="seccion carreras" id="carreras">
+    <div class="container">
+        <h2 class="seccion-titulo">Nuestras Carreras</h2>
+        <div class="grid-carreras">
+
+            <a href="arquitectura-interiores.html" class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=400&fit=crop" alt="Arquitectura de Interiores">
+                    <span class="badge badge-diseno">Diseño</span>
+                </div>
+                <div class="card-body">
+                    <h3>Arquitectura de Interiores</h3>
+                    <span class="arrow">›</span>
+                </div>
+            </a>
+
+            <a href="comunicacion-audiovisual.html" class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop" alt="Comunicación Audiovisual">
+                    <span class="badge badge-comunicaciones">Comunicaciones</span>
+                </div>
+                <div class="card-body">
+                    <h3>Comunicación Audiovisual Multimedia</h3>
+                    <span class="arrow">›</span>
+                </div>
+            </a>
+
+            <a href="direccion-innovacion.html" class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Dirección de Innovación">
+                    <span class="badge badge-negocios">Negocios</span>
+                    <span class="badge-nueva">Nueva</span>
+                </div>
+                <div class="card-body">
+                    <h3>Dirección de Innovación y Futuros Sostenibles</h3>
+                    <span class="arrow">›</span>
+                </div>
+            </a>
+
+            <a href="diseno-grafico.html" class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Diseño Gráfico">
+                    <span class="badge badge-diseno">Diseño</span>
+                </div>
+                <div class="card-body">
+                    <h3>Diseño Gráfico</h3>
+                    <span class="arrow">›</span>
+                </div>
+            </a>
+
+            <a href="fotografia.html" class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop" alt="Fotografía">
+                    <span class="badge badge-comunicaciones">Comunicaciones</span>
+                </div>
+                <div class="card-body">
+                    <h3>Fotografía Profesional</h3>
+                    <span class="arrow">›</span>
+                </div>
+            </a>
+
+            <a href="marketing-digital.html" class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Marketing Digital">
+                    <span class="badge badge-negocios">Negocios</span>
+                    <span class="badge-nueva">Nueva</span>
+                </div>
+                <div class="card-body">
+                    <h3>Marketing Digital y Publicidad</h3>
+                    <span class="arrow">›</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+    <!-- UBÍCANOS -->
+    <section class="seccion ubicanos" id="ubicanos">
+        <div class="container">
+            <h2 class="seccion-titulo">Ubícanos</h2>
+            <div class="ubicanos-grid">
+                <div class="ubicanos-info">
+                    <h3>Campus Principal</h3>
+                    <p><strong>Dirección:</strong> Av. Arequipa 1450, Lince, Lima, Perú</p>
+                    <p><strong>Teléfono:</strong> 905 977 111</p>
+                    <p><strong>WhatsApp:</strong> +51 904 434 525</p>
+                    <p><strong>Correo:</strong> info@educatech.edu.pe</p>
+                    <p><strong>Horario de atención:</strong><br>
+                    Lunes a Viernes: 8:30 am - 6:30 pm<br>
+                    Sábados: 9:00 am - 1:00 pm</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISIÓN -->
+    <section class="seccion admision" id="admision">
+        <div class="container">
+            <h2 class="seccion-titulo">Admisión 2026</h2>
+            <div class="fechas">
+                <div class="fecha-card">
+                    <h3>Inscripciones</h3>
+                    <p>Del 15 de enero<br>al 28 de febrero 2026</p>
+                </div>
+                <div class="fecha-card">
+                    <h3>Examen de Admisión</h3>
+                    <p>7 de marzo 2026</p>
+                </div>
+                <div class="fecha-card">
+                    <h3>Resultados</h3>
+                    <p>14 de marzo 2026</p>
+                </div>
+                <div class="fecha-card">
+                    <h3>Matrícula</h3>
+                    <p>Del 17 al 28 de marzo 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMUNIDAD -->
+    <section class="seccion comunidad" id="comunidad">
+        <div class="container">
+            <h2 class="seccion-titulo">Comunidad EducaTech</h2>
+            <p class="comunidad-texto">
+                Nuestra comunidad está formada por más de 5,000 estudiantes, egresados y docentes 
+                que comparten la pasión por la creatividad y la innovación. Organizamos talleres, 
+                conferencias, ferias de empleo y eventos de networking durante todo el año.
+            </p>
+        </div>
+    </section>
+
+    <!-- DOCENTES -->
+    <section class="seccion docentes" id="docentes">
+        <div class="container">
+            <h2 class="seccion-titulo">Nuestros Docentes</h2>
+            <div class="grid-docentes">
+                <div class="docente-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Docente">
+                    <h3>Arq. María Fernández</h3>
+                    <div class="carrera">Arquitectura de Interiores</div>
+                    <p>Más de 12 años de experiencia en diseño de espacios residenciales y comerciales.</p>
+                </div>
+                <div class="docente-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Docente">
+                    <h3>Lic. Carlos Mendoza</h3>
+                    <div class="carrera">Comunicación Audiovisual</div>
+                    <p>Director y productor audiovisual con trayectoria en cine y televisión.</p>
+                </div>
+                <div class="docente-card">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Docente">
+                    <h3>Mg. Laura Quispe</h3>
+                    <div class="carrera">Dirección de Innovación</div>
+                    <p>Consultora en innovación y sostenibilidad. Experta en design thinking.</p>
+                </div>
+                <div class="docente-card">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Docente">
+                    <h3>Lic. Diego Ramírez</h3>
+                    <div class="carrera">Diseño Gráfico</div>
+                    <p>Director de arte con más de 10 años en agencias publicitarias.</p>
+                </div>
+                <div class="docente-card">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Docente">
+                    <h3>Fotógrafa Ana Torres</h3>
+                    <div class="carrera">Fotografía Profesional</div>
+                    <p>Fotógrafa profesional con exposiciones nacionales e internacionales.</p>
+                </div>
+                <div class="docente-card">
+                    <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Docente">
+                    <h3>Lic. Jorge Vargas</h3>
+                    <div class="carrera">Marketing Digital</div>
+                    <p>Especialista en marketing digital y growth para marcas reconocidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <section class="seccion registro" id="registro">
+        <div class="container">
+            <h2 class="seccion-titulo">Regístrate ahora</h2>
+            <p style="text-align: center; color: #555; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Completa el formulario y un asesor se pondrá en contacto contigo.
+            </p>
+
+            <form id="formRegistro" class="form-box">
+                <div class="form-group">
+                    <label for="nombre">Nombres y Apellidos *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <small id="errorNombre">Por favor ingresa tu nombre completo</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico *</label>
+                    <input type="email" id="email" name="email" required>
+                    <small id="errorEmail">Ingresa un correo válido</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono / WhatsApp *</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                    <small id="errorTelefono">Ingresa un número válido (mínimo 9 dígitos)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="carrera">Carrera de interés *</label>
+                    <select id="carrera" name="carrera" required>
+                        <option value="">Selecciona una carrera</option>
+                        <option value="Arquitectura de Interiores">Arquitectura de Interiores</option>
+                        <option value="Comunicación Audiovisual Multimedia">Comunicación Audiovisual Multimedia</option>
+                        <option value="Dirección de Innovación">Dirección de Innovación y Futuros Sostenibles</option>
+                        <option value="Diseño Gráfico">Diseño Gráfico</option>
+                        <option value="Fotografía Profesional">Fotografía Profesional</option>
+                        <option value="Marketing Digital">Marketing Digital y Publicidad</option>
+                    </select>
+                    <small id="errorCarrera">Selecciona una carrera</small>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terminos" required>
+                    <label for="terminos">Acepto los términos y condiciones y autorizo el uso de mis datos.</label>
+                </div>
+                <small id="errorTerminos" style="color:red; display:none;">Debes aceptar los términos</small>
+
+                <button type="submit" class="btn-enviar">Enviar registro</button>
+
+                <div id="mensajeExito" class="mensaje-exito">
+                    ¡Registro enviado correctamente! Nos pondremos en contacto contigo pronto.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Menú hamburguesa
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Validación del formulario
+        const formRegistro = document.getElementById('formRegistro');
+
+        formRegistro.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            document.querySelectorAll('small[id^="error"]').forEach(el => el.style.display = 'none');
+
+            let valido = true;
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const carrera = document.getElementById('carrera').value;
+            const terminos = document.getElementById('terminos').checked;
+
+            if (nombre.length < 5) {
+                document.getElementById('errorNombre').style.display = 'block';
+                valido = false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('errorEmail').style.display = 'block';
+                valido = false;
+            }
+
+            if (telefono.replace(/\D/g, '').length < 9) {
+                document.getElementById('errorTelefono').style.display = 'block';
+                valido = false;
+            }
+
+            if (carrera === '') {
+                document.getElementById('errorCarrera').style.display = 'block';
+                valido = false;
+            }
+
+            if (!terminos) {
+                document.getElementById('errorTerminos').style.display = 'block';
+                valido = false;
+            }
+
+            if (valido) {
+                document.getElementById('mensajeExito').style.display = 'block';
+                formRegistro.reset();
+                console.log('Simulación de envío POST:', { nombre, email, telefono, carrera });
+            }
+        });
+    </script>
+
+</body>
+</html>

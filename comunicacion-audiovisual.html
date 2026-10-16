@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicación Audiovisual Multimedia | Toulouse Lautrec</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        .navbar {
+            background-color: #5c2d91;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .detalle {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .detalle img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+        }
+        .contenido {
+            padding: 40px;
+        }
+        .contenido h1 {
+            color: #5c2d91;
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+        .badge {
+            display: inline-block;
+            background: #5c2d91;
+            color: white;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .contenido h2 {
+            color: #5c2d91;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+        .contenido p, .contenido ul {
+            color: #444;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+        .contenido ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .btn-volver {
+            display: inline-block;
+            margin-top: 35px;
+            background: #5c2d91;
+            color: white;
+            padding: 13px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .btn-volver:hover {
+            background: #4a2475;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo" onclick="history.back(); return false;">← Volver a Carreras</a>
+    </nav>
+
+    <div class="detalle">
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&h=600&fit=crop" alt="Comunicación Audiovisual Multimedia">
+
+        <div class="contenido">
+            <span class="badge">Comunicaciones</span>
+            <h1>Comunicación Audiovisual Multimedia</h1>
+
+            <p>
+                Conviértete en un profesional capaz de crear contenido audiovisual de alto impacto. 
+                Aprende a producir, dirigir y editar proyectos para cine, televisión, plataformas digitales y redes sociales.
+            </p>
+
+            <h2>¿Qué aprenderás?</h2>
+            <ul>
+                <li>Producción y dirección audiovisual</li>
+                <li>Edición de video y postproducción (Premiere, After Effects, DaVinci)</li>
+                <li>Fotografía y cinematografía</li>
+                <li>Guion y storytelling</li>
+                <li>Sonido y diseño sonoro</li>
+                <li>Creación de contenido para redes y streaming</li>
+            </ul>
+
+            <h2>Duración</h2>
+            <p>3 años (6 semestres)</p>
+
+            <h2>Modalidad</h2>
+            <p>Presencial</p>
+
+            <h2>Perfil del egresado</h2>
+            <p>
+                Podrás trabajar como director de video, editor profesional, productor de contenido digital, 
+                camarógrafo, creador de contenido o emprender tu propia productora audiovisual.
+            </p>
+
+            <a href="#" class="btn-volver" onclick="history.back(); return false;">← Volver a todas las carreras</a>
+        </div>
+    </div>
+
+</body>
+</html>
